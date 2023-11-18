@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import DayState from '@/components/DayState';
 
 export default function Home() {
   const duties = {
@@ -45,6 +46,7 @@ export default function Home() {
               {weekDays.map(day => (
                 <div key={day} className={'flex flex-col'}>
                   <span className={'font-sans text-center text-xs text-white'}>{day}</span>
+                  <DayState day={true} />
                 </div>
               ))}
             </section>
