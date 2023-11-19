@@ -20,7 +20,18 @@ export default function Home() {
     },
   };
 
+  const today = new Date();
+  const todayWeekDay = today.getDay();
   const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+  const sortedWeekDays = weekDays.slice(todayWeekDay).concat(weekDays.slice(0, todayWeekDay));
+  const last7Days = weekDays
+    .map((_, index) => {
+      const date = new Date();
+      date.setDate(date.getDate() - index);
+      return date.toISOString().slice(0, 10);
+    })
+    .reverse();
 
   return (
     <main className={'container relative flex flex-col gap-8 px-4 pt-16'}>
