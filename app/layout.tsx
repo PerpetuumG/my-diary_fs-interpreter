@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Montserrat } from 'next/font/google';
 import './globals.css';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat' });
@@ -17,7 +18,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={`${montserrat.variable} ${inter.variable} flex flex-col items-center mt-10 bg-neutral-900`}
       >
-        <Image src={'/images/logo.png'} alt={'My Diary Logo'} width={200} height={200} />
+        <Link href={'/'}>
+          <Image src={'/images/logo.png'} alt={'My Diary Logo'} width={200} height={200} />
+        </Link>
         {children}
       </body>
     </html>

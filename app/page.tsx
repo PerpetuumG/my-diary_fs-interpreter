@@ -27,7 +27,7 @@ export default async function Home() {
   const duties: DutySchedule = (await kv.hgetall('duties')) as DutySchedule | null;
   const today = new Date();
   const todayWeekDay = today.getDay();
-  const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  // const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   const sortedWeekDays = weekDays.slice(todayWeekDay).concat(weekDays.slice(0, todayWeekDay));
   const last7Days = weekDays
@@ -58,14 +58,16 @@ export default async function Home() {
               </button>
             </div>
 
-            <section className={'grid grid-cols-7 bg-neutral-800 rounded-md p-2'}>
-              {weekDays.map((day, index) => (
-                <div key={day} className={'flex flex-col'}>
-                  <span className={'font-sans text-center text-xs text-white'}>{day}</span>
-                  <DayState day={dutyTime[last7Days[index]]} />
-                </div>
-              ))}
-            </section>
+            <Link href={`duty/${duty}`}>
+              <section className={'grid grid-cols-7 bg-neutral-800 rounded-md p-2'}>
+                {sortedWeekDays.map((day, index) => (
+                  <div key={day} className={'flex flex-col'}>
+                    <span className={'font-sans text-center text-xs text-white'}>{day}</span>
+                    <DayState day={dutyTime[last7Days[index]]} />
+                  </div>
+                ))}
+              </section>
+            </Link>
           </div>
         ))}
 
