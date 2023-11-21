@@ -27,7 +27,7 @@ export default async function Home() {
   const duties: DutySchedule = (await kv.hgetall('duties')) as DutySchedule | null;
   const today = new Date();
   const todayWeekDay = today.getDay();
-  // const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   const sortedWeekDays = weekDays.slice(todayWeekDay).concat(weekDays.slice(0, todayWeekDay));
   const last7Days = weekDays
