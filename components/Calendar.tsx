@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import DayState from '@/components/DayState';
+import { toggleDuty } from '@/app/actions';
 
 const getDayInMonth = (month: number, year: number) => {
   const date = new Date(year, month, 1);

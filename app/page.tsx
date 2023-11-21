@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import DayState from '@/components/DayState';
 import Link from 'next/link';
 import { kv } from '@vercel/kv';
+import DeleteButton from '@/components/DeleteButton';
 
 type DutySchedule = { [duty: string]: Record<string, boolean> } | null;
 
@@ -53,9 +53,7 @@ export default async function Home() {
             <div className='flex justify-between item-center'>
               <span className='text-xl font-light text-white font-sans'>{duty}</span>
 
-              <button>
-                <Image src={'/images/delete.svg'} alt={'Icon delete'} width={20} height={20} />
-              </button>
+              <DeleteButton duty={duty} />
             </div>
 
             <Link href={`duty/${duty}`}>
